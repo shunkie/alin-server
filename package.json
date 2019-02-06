@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "alin server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "null"
+  },
+  "keywords": [
+    "server"
+  ],
+  "author": "shunkie",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-mount": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "mongoose": "^5.4.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
