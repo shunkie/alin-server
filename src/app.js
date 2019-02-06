@@ -1,3 +1,6 @@
+const fs = require('fs')
+const path = require('path')
+const https = require('https')
 const Koa = require('koa')
 const mount = require('koa-mount')
 const serve = require('koa-static')
@@ -16,6 +19,12 @@ app.use(mount('/image', serve(__dirname + '/public/image')))
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.listen(80, () => {
+
+const options = {
+    key: fs.readFileSync(path.join(__dirname, 'cert/mine.key')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert/mine.pem'))
+  }
+
+https.createServer(options, app.callback()).listen(80, () => {
   console.log('server is running...')
 })
