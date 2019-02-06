@@ -1,10 +1,13 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = mongoose.Schema.Types.ObjectId
+const ObjectId = Schema.Types.ObjectId
 
 const BannerSchema = new Schema({
   title: String,
-  imageId: ObjectId,
+  image: {
+    type: ObjectId,
+    ref: 'Image'
+  },
   updatedTime: {
     type: Date,
     default: Date.now

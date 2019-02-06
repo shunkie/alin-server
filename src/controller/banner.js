@@ -1,4 +1,4 @@
-const Banner = require('../model/banner')
+const { Banner } = require('../model')
 
 const BannerController = {
   /**
@@ -22,7 +22,7 @@ const BannerController = {
    * GET api/v1/banners
    */
   async getBanners (ctx, next) {
-    const res = await Banner.find({})
+    const res = await Banner.find({}).populate('image')
     ctx.body = res
   }
 }
