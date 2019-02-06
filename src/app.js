@@ -2,8 +2,10 @@ const Koa = require('koa')
 const mount = require('koa-mount')
 const serve = require('koa-static')
 const mongoose = require('mongoose')
+const config = require('./config')
 
-mongoose.connect('mongodb://127.0.0.1:27017/test', {
+mongoose.connect(config.mongodb.url, {
+  authSource: config.mongodb.authSource,
   useNewUrlParser: true
 })
 
