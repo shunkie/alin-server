@@ -14,6 +14,6 @@ app.use(mount('/image', serve(__dirname + '/public/image')))
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.listen(8080, () => {
+app.listen(80, () => {
   console.log('server is running...')
 })
