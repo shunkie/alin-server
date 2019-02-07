@@ -1,3 +1,4 @@
 module.exports = {
-  banner: require('./banner')
+  banner: require('./banner'),
+  image: require('./image')
 }

@@ -1,6 +1,6 @@
 const { Banner } = require('../model')
 
-const BannerController = {
+module.exports = {
   /**
    * GET api/v1/banner/:id
    */
@@ -26,5 +26,3 @@ const BannerController = {
     ctx.body = res
   }
 }
-
-module.exports = BannerController
