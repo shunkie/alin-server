@@ -8,7 +8,7 @@ module.exports = {
     const description = ctx.query.description
     let res = []
     if (description) {
-      res = Image.find({ description })
+      res = await Image.find({ description })
     } else {
       res = await Image.find({})
     }
