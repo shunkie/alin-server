@@ -1,11 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const http = require('http')
-const https = require('https')
 const Koa = require('koa')
-const mount = require('koa-mount')
-const serve = require('koa-static')
-const { default: enforceHttps } = require('koa-sslify')
 const mongoose = require('mongoose')
 const config = require('./config')
 
@@ -17,15 +12,9 @@ mongoose.connect(config.mongodb.url, {
 const app = new Koa()
 const router = require('./router')
 
-app.use(enforceHttps())
-app.use(mount('/image', serve(__dirname + '/public/image')))
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-const options = {
-  key: fs.readFileSync(path.join(__dirname, 'cert/mine.key')),
-  cert: fs.readFileSync(path.join(__dirname, 'cert/mine.pem'))
-}
-
-http.createServer(app.callback()).listen(80)
-https.createServer(options, app.callback()).listen(443)
+app.listen(8080, () => {
+  console.log('server is running...')
+})
